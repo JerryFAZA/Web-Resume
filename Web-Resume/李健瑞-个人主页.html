@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-edit-version="v4">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>李健瑞 · AI 产品经理 / 信息系统项目管理师</title>
+<meta name="description" content="李健瑞 — 12 年信息化经验，AI 产品经理 / 产品经理 / 项目经理。主导千万级项目交付与多款 AI 产品从 0-1 落地。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0e14;
+  --bg-soft:#0f131c;
+  --panel:#121724;
+  --panel-2:#161d2e;
+  --line:rgba(140,170,200,.14);
+  --line-strong:rgba(140,170,200,.3);
+  --text:#e6edf6;
+  --text-dim:#9fb0c6;
+  --text-faint:#65748c;
+  --accent:#3ce8c8;          /* cyan-green */
+  --accent-soft:rgba(60,232,200,.1);
+  --accent-2:#ff9e64;        /* data orange */
+  --accent-2-soft:rgba(255,158,100,.1);
+  --sans:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
+  --mono:"JetBrains Mono","SF Mono",Consolas,monospace;
+  --maxw:1140px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--sans);
+  line-height:1.75;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--accent);color:#04120e}
+
+/* ---------- atmosphere: drifting tech grid + mesh ---------- */
+.bg-layer{position:fixed;inset:0;z-index:0;pointer-events:none}
+.bg-grid{
+  background-image:
+    linear-gradient(rgba(140,170,200,.06) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(140,170,200,.06) 1px,transparent 1px);
+  background-size:52px 52px;
+  animation:gridDrift 60s linear infinite;
+  mask-image:radial-gradient(ellipse 95% 80% at 50% 25%,#000 35%,transparent 100%);
+  -webkit-mask-image:radial-gradient(ellipse 95% 80% at 50% 25%,#000 35%,transparent 100%);
+}
+@keyframes gridDrift{to{background-position:52px 104px}}
+.bg-mesh{
+  background:
+    radial-gradient(ellipse 55% 40% at 80% 6%,rgba(60,232,200,.08),transparent 65%),
+    radial-gradient(ellipse 42% 36% at 8% 32%,rgba(255,158,100,.05),transparent 60%),
+    radial-gradient(ellipse 60% 45% at 50% 108%,rgba(60,232,200,.05),transparent 70%);
+}
+main,header,footer{position:relative;z-index:1}
+
+/* ---------- shared ---------- */
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 36px}
+section{padding:106px 0}
+.kicker{
+  font-family:var(--mono);font-size:12px;letter-spacing:.3em;
+  color:var(--accent);text-transform:uppercase;
+  display:flex;align-items:center;gap:14px;margin-bottom:22px;
+}
+.kicker::before{content:"";width:34px;height:1px;background:var(--accent);opacity:.8}
+h2.sec-title{
+  font-size:clamp(26px,3.2vw,38px);font-weight:700;
+  line-height:1.35;letter-spacing:.03em;margin-bottom:14px;
+}
+.sec-sub{color:var(--text-dim);max-width:640px;font-size:15px;font-weight:300}
+
+/* reveal motion */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.6,.2,1),transform .8s cubic-bezier(.2,.6,.2,1)}
+.rv.in{opacity:1;transform:none}
+.rv-d1{transition-delay:.08s}.rv-d2{transition-delay:.16s}.rv-d3{transition-delay:.24s}.rv-d4{transition-delay:.32s}
+@media (prefers-reduced-motion: reduce){
+  .rv{opacity:1;transform:none;transition:none}
+  html{scroll-behavior:auto}
+  *{animation:none!important;transition-duration:.01ms!important}
+}
+
+/* ---------- nav ---------- */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  background:rgba(11,14,20,.74);border-bottom:1px solid var(--line);
+}
+.nav{max-width:var(--maxw);margin:0 auto;padding:0 36px;height:60px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:var(--mono);font-weight:700;font-size:15px;letter-spacing:.14em;color:var(--text);text-decoration:none}
+.nav-logo em{font-style:normal;color:var(--accent)}
+.nav-logo .cur{color:var(--accent);animation:blink 1.2s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.nav-links{display:flex;gap:30px;list-style:none;align-items:center}
+.nav-links a{
+  font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:var(--text-dim);
+  text-decoration:none;transition:color .2s;
+}
+.nav-links a:hover,.nav-links a:focus-visible{color:var(--accent)}
+.nav-cta{
+  font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:#04120e!important;
+  background:var(--accent);padding:8px 18px;border-radius:3px;transition:filter .2s;
+}
+.nav-cta:hover{filter:brightness(1.12)}
+.nav-burger{display:none;background:none;border:1px solid var(--line-strong);color:var(--text);border-radius:4px;padding:6px 10px;font-family:var(--mono);font-size:14px;cursor:pointer}
+@media (max-width:820px){
+  .nav-links{
+    display:none;position:absolute;top:60px;right:16px;flex-direction:column;gap:0;
+    background:var(--panel-2);border:1px solid var(--line-strong);border-radius:8px;padding:8px;min-width:200px;
+  }
+  .nav-links.open{display:flex}
+  .nav-links a{display:block;padding:11px 16px;border-radius:6px}
+  .nav-links a:hover{background:var(--accent-soft)}
+  .nav-burger{display:block}
+  .nav-cta-li{display:none}
+}
+
+/* ---------- hero ---------- */
+.hero{min-height:100vh;display:flex;align-items:center;padding:140px 0 90px;position:relative;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:44px;align-items:center;width:100%}
+.hero-status{
+  display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;
+  color:var(--text-dim);border:1px solid var(--line-strong);border-radius:4px;padding:7px 16px;margin-bottom:30px;background:rgba(18,23,36,.6);
+}
+.hero-status .dot{width:7px;height:7px;border-radius:2px;background:var(--accent);box-shadow:0 0 10px var(--accent);animation:pulse 2.4s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+h1.hero-name{
+  font-family:var(--mono);font-weight:700;
+  font-size:clamp(48px,7.6vw,92px);line-height:1.05;letter-spacing:.02em;
+}
+h1.hero-name .name-cn{display:block}
+h1.hero-name .name-en{display:block;font-size:clamp(16px,1.6vw,22px);letter-spacing:.42em;color:var(--text-faint);margin-top:18px;font-weight:400}
+h1.hero-name .name-en b{color:var(--accent);font-weight:400}
+.hero-role{
+  margin-top:26px;font-family:var(--mono);font-size:clamp(13px,1.5vw,16px);color:var(--text);letter-spacing:.1em;
+}
+.hero-role .sep{color:var(--text-faint);margin:0 10px}
+.hero-value{
+  margin-top:18px;max-width:580px;color:var(--text-dim);font-weight:300;font-size:15.5px;
+}
+.hero-value strong{color:var(--text);font-weight:500}
+.hero-ctas{display:flex;gap:16px;margin-top:40px;flex-wrap:wrap}
+.btn{
+  font-family:var(--mono);font-size:13px;letter-spacing:.1em;text-decoration:none;
+  padding:14px 28px;border-radius:4px;display:inline-flex;align-items:center;gap:10px;
+  transition:transform .2s,filter .2s,background .2s,border-color .2s,color .2s;
+}
+.btn-primary{background:var(--accent);color:#04120e;font-weight:500}
+.btn-primary:hover{filter:brightness(1.12);transform:translateY(-2px)}
+.btn-ghost{border:1px solid var(--line-strong);color:var(--text)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.hero-meta{margin-top:44px;display:flex;gap:34px;flex-wrap:wrap}
+.hero-meta div{font-size:12.5px;color:var(--text-faint)}
+.hero-meta b{display:block;font-family:var(--mono);font-size:16px;color:var(--text);font-weight:500;margin-bottom:2px}
+.hero-meta b.o{color:var(--accent-2)}
+
+/* ---------- hero 3D scene ---------- */
+.hero-visual{perspective:1000px;display:flex;justify-content:center;align-items:center;min-height:440px}
+.scene{position:relative;width:340px;height:340px;transform-style:preserve-3d;animation:sceneFloat 8s ease-in-out infinite}
+@keyframes sceneFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+.cube{position:absolute;inset:40px;transform-style:preserve-3d;animation:cubeSpin 26s linear infinite}
+@keyframes cubeSpin{from{transform:rotateX(-18deg) rotateY(0)}to{transform:rotateX(-18deg) rotateY(360deg)}}
+.cube i{
+  position:absolute;inset:0;border:1px solid rgba(60,232,200,.35);background:rgba(60,232,200,.03);
+  box-shadow:inset 0 0 40px rgba(60,232,200,.05);
+}
+.cube i:nth-child(1){transform:translateZ(120px)}
+.cube i:nth-child(2){transform:rotateY(180deg) translateZ(120px)}
+.cube i:nth-child(3){transform:rotateY(90deg) translateZ(120px)}
+.cube i:nth-child(4){transform:rotateY(-90deg) translateZ(120px)}
+.cube i:nth-child(5){transform:rotateX(90deg) translateZ(120px)}
+.cube i:nth-child(6){transform:rotateX(-90deg) translateZ(120px)}
+.cube-core{
+  position:absolute;top:50%;left:50%;width:120px;height:120px;transform:translate(-50%,-50%);
+  border:1px solid var(--accent);border-radius:4px;background:rgba(11,14,20,.85);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
+  font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--accent);text-align:center;
+  box-shadow:0 0 44px rgba(60,232,200,.22);
+}
+.cube-core b{font-size:14px;font-weight:500;letter-spacing:.1em}
+.chip{
+  position:absolute;font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--text-dim);
+  background:rgba(18,23,36,.88);border:1px solid var(--line-strong);border-radius:4px;padding:8px 14px;
+  white-space:nowrap;transform-style:preserve-3d;
+}
+.chip b{color:var(--accent);font-weight:400}
+.chip.c1{top:6%;left:-4%;animation:chipFloat1 7s ease-in-out infinite}
+.chip.c2{top:22%;right:-8%;animation:chipFloat2 8.5s ease-in-out infinite}
+.chip.c3{bottom:26%;left:-10%;animation:chipFloat2 9s ease-in-out infinite}
+.chip.c4{bottom:6%;right:-4%;animation:chipFloat1 7.6s ease-in-out infinite}
+@keyframes chipFloat1{0%,100%{transform:translateZ(60px) translateY(0)}50%{transform:translateZ(60px) translateY(-12px)}}
+@keyframes chipFloat2{0%,100%{transform:translateZ(30px) translateY(0)}50%{transform:translateZ(30px) translateY(12px)}}
+.scene-glow{
+  position:absolute;inset:-30px;background:radial-gradient(circle,rgba(60,232,200,.1),transparent 65%);
+  filter:blur(10px);z-index:-1;
+}
+.hero-scroll{
+  position:absolute;bottom:28px;left:50%;transform:translateX(-50%);
+  font-family:var(--mono);font-size:11px;letter-spacing:.3em;color:var(--text-faint);
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+}
+.hero-scroll::after{content:"";width:1px;height:36px;background:linear-gradient(var(--accent),transparent);animation:scrolldrip 2s infinite}
+@keyframes scrolldrip{0%{transform:scaleY(0);transform-origin:top}55%{transform:scaleY(1);transform-origin:top}100%{transform:scaleY(0);transform-origin:bottom}}
+@media (max-width:920px){
+  .hero{padding-top:120px}
+  .hero-grid{grid-template-columns:1fr}
+  .hero-visual{min-height:400px;transform:scale(.82);margin:-20px 0}
+  .hero-scroll{display:none}
+}
+
+/* ---------- stats strip ---------- */
+.stats{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:0;background:rgba(15,19,28,.6)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);max-width:var(--maxw);margin:0 auto}
+.stat{padding:38px 30px;border-left:1px solid var(--line);position:relative}
+.stat:first-child{border-left:none}
+.stat::before{content:"";position:absolute;top:0;left:0;width:26px;height:2px;background:var(--accent)}
+.stat b{display:block;font-family:var(--mono);font-size:clamp(22px,2.4vw,30px);color:var(--text);font-weight:500;line-height:1.2}
+.stat b .u{color:var(--accent-2)}
+.stat span{font-size:13px;color:var(--text-dim);display:block;margin-top:6px}
+@media (max-width:820px){
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .stat{border-top:1px solid var(--line)}
+  .stat:nth-child(-n+2){border-top:none}
+  .stat:nth-child(odd){border-left:none}
+}
+
+/* ---------- about ---------- */
+.about-grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:52px;align-items:start;margin-top:46px}
+.about-lead{
+  font-size:clamp(18px,2.1vw,23px);font-weight:500;line-height:1.8;letter-spacing:.02em;
+}
+.about-lead .hl{color:var(--accent)}
+.about-rest{margin-top:22px;color:var(--text-dim);font-weight:300;font-size:15px}
+.about-rest strong{color:var(--text);font-weight:500}
+.id-card{
+  background:var(--panel);border:1px solid var(--line-strong);border-radius:8px;padding:26px;position:relative;
+  font-family:var(--mono);
+}
+.id-card::before{content:"PROFILE.JSON";position:absolute;top:-9px;left:20px;font-size:10px;letter-spacing:.24em;color:var(--accent);background:var(--bg);padding:0 10px}
+.id-row{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px dashed var(--line);font-size:12.5px}
+.id-row:last-child{border-bottom:none}
+.id-row .k{color:var(--text-faint);font-size:11px;letter-spacing:.08em;flex-shrink:0}
+.id-row .k::before{content:"\"";color:var(--accent)}
+.id-row .k::after{content:"\":";color:var(--accent)}
+.id-row .v{color:var(--text);text-align:right;font-family:var(--sans);font-size:13px;font-weight:400}
+@media (max-width:920px){.about-grid{grid-template-columns:1fr}}
+
+/* ---------- skills ---------- */
+.skill-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:48px}
+.skill-card{
+  background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:28px;
+  transition:border-color .25s,transform .25s,box-shadow .25s;position:relative;overflow:hidden;
+  transform-style:preserve-3d;will-change:transform;
+}
+.skill-card::before{content:"";position:absolute;top:0;left:0;width:100%;height:2px;background:linear-gradient(90deg,var(--accent),transparent 70%);opacity:0;transition:opacity .25s}
+.skill-card:hover{border-color:rgba(60,232,200,.4);box-shadow:0 20px 50px rgba(0,0,0,.4)}
+.skill-card:hover::before{opacity:1}
+.skill-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px}
+.skill-head h3{font-size:18px;font-weight:700;letter-spacing:.04em}
+.skill-head .idx{font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:.12em}
+.skill-card p{color:var(--text-dim);font-size:14px;font-weight:300}
+.skill-card p b{color:var(--text);font-weight:500}
+.skill-tools{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px}
+.skill-tools span{
+  font-family:var(--mono);font-size:11px;color:var(--text-dim);
+  border:1px solid var(--line);border-radius:3px;padding:4px 11px;letter-spacing:.04em;
+}
+@media (max-width:760px){.skill-grid{grid-template-columns:1fr}}
+
+/* ---------- experience (before projects) ---------- */
+.timeline{margin-top:52px;position:relative;padding-left:36px}
+.timeline::before{content:"";position:absolute;left:8px;top:8px;bottom:8px;width:1px;background:linear-gradient(var(--accent),var(--line-strong) 70%,transparent)}
+.t-item{position:relative;padding-bottom:50px}
+.t-item:last-child{padding-bottom:0}
+.t-item::before{
+  content:"";position:absolute;left:-34px;top:7px;width:11px;height:11px;border-radius:2px;
+  background:var(--bg);border:2px solid var(--accent);box-shadow:0 0 12px rgba(60,232,200,.4);
+  transform:rotate(45deg);
+}
+.t-time{font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.14em}
+.t-head{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin:9px 0 10px}
+.t-head h3{font-size:19px;font-weight:700;letter-spacing:.03em}
+.t-head .t-role{font-family:var(--mono);font-size:12.5px;color:var(--text-dim);letter-spacing:.04em}
+.t-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.t-tags span{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--accent);
+  border:1px solid rgba(60,232,200,.35);border-radius:3px;padding:4px 12px;background:var(--accent-soft);
+}
+.t-item p{color:var(--text-dim);font-size:14px;font-weight:300;max-width:740px}
+.t-item p b{color:var(--text);font-weight:500}
+
+/* ---------- projects (3D tilt case cards) ---------- */
+.proj{margin-top:50px;display:grid;grid-template-columns:1fr;gap:24px}
+.case{
+  display:grid;grid-template-columns:200px minmax(0,1fr);border:1px solid var(--line);
+  border-radius:8px;overflow:hidden;background:var(--panel);
+  transition:border-color .25s,box-shadow .25s;transform-style:preserve-3d;will-change:transform;position:relative;
+}
+.case:hover{border-color:rgba(60,232,200,.4);box-shadow:0 26px 60px rgba(0,0,0,.5)}
+.case::after{
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .3s;
+  background:linear-gradient(115deg,transparent 30%,rgba(60,232,200,.06) 45%,transparent 60%);
+}
+.case:hover::after{opacity:1}
+.case-visual{
+  position:relative;display:flex;flex-direction:column;justify-content:space-between;
+  padding:24px;border-right:1px solid var(--line);
+  background:
+    radial-gradient(ellipse 90% 60% at 15% 10%,var(--accent-soft),transparent),
+    linear-gradient(160deg,var(--panel-2),var(--bg-soft));
+}
+.case-visual .c-year{font-family:var(--mono);font-size:11px;color:var(--text-faint);letter-spacing:.12em}
+.case-visual .c-amount{font-family:var(--mono);font-size:clamp(17px,1.8vw,23px);color:var(--accent-2);font-weight:500;margin-top:auto;line-height:1.35}
+.case-visual .c-amount small{display:block;font-size:10.5px;color:var(--text-faint);font-weight:400;margin-top:5px;letter-spacing:.08em}
+.case-visual .c-amount.cy{color:var(--accent)}
+.case-body{padding:26px 30px}
+.case-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.case-tags span{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--accent);border:1px solid rgba(60,232,200,.35);border-radius:3px;padding:3px 11px;background:var(--accent-soft)}
+.case-tags span.t2{color:var(--text-dim);border-color:var(--line);background:transparent}
+.case-body h3{font-size:20px;font-weight:700;letter-spacing:.02em;margin-bottom:8px}
+.case-body .c-desc{color:var(--text-dim);font-size:14px;font-weight:300;max-width:640px}
+.case-facts{margin-top:16px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.case-facts div{border-left:2px solid rgba(60,232,200,.5);padding-left:12px}
+.case-facts b{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;color:var(--text-faint);margin-bottom:4px;font-weight:400}
+.case-facts p{font-size:13px;color:var(--text);font-weight:400;line-height:1.6}
+@media (max-width:860px){
+  .case{grid-template-columns:1fr}
+  .case-visual{flex-direction:row;align-items:baseline;gap:14px;border-right:none;border-bottom:1px solid var(--line);padding:18px 24px}
+  .case-visual .c-amount{margin-top:0;margin-left:auto;font-size:17px;text-align:right}
+  .case-facts{grid-template-columns:1fr}
+}
+
+/* ---------- certs / education ---------- */
+.cert-band{margin-top:46px;display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.cert-card{border:1px solid var(--line);border-radius:8px;padding:24px;background:var(--panel);transition:border-color .25s,transform .25s}
+.cert-card:hover{border-color:var(--line-strong);transform:translateY(-4px)}
+.cert-card .c-ico{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;color:var(--accent-2);margin-bottom:10px}
+.cert-card h3{font-size:16.5px;font-weight:700;margin-bottom:6px;letter-spacing:.03em}
+.cert-card p{font-size:13px;color:var(--text-dim);font-weight:300}
+@media (max-width:760px){.cert-band{grid-template-columns:1fr}}
+
+/* ---------- contact / footer ---------- */
+.contact{padding:130px 0 110px;text-align:center;position:relative}
+.contact h2{
+  font-size:clamp(30px,4.4vw,50px);font-weight:700;letter-spacing:.04em;line-height:1.4;
+}
+.contact h2 em{font-style:normal;color:var(--accent)}
+.contact .c-sub{margin-top:16px;color:var(--text-dim);font-weight:300;max-width:540px;margin-left:auto;margin-right:auto;font-size:15px}
+.contact-ctas{margin-top:42px;display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+.contact-info{margin-top:52px;display:flex;justify-content:center;gap:44px;flex-wrap:wrap}
+.contact-info a{
+  font-family:var(--mono);font-size:13px;color:var(--text-dim);text-decoration:none;letter-spacing:.06em;
+  display:inline-flex;align-items:center;gap:9px;transition:color .2s;
+}
+.contact-info a:hover{color:var(--accent)}
+.contact-info .loc{font-family:var(--mono);font-size:13px;color:var(--text-dim);letter-spacing:.06em}
+footer{border-top:1px solid var(--line);padding:28px 0}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--text-faint);font-family:var(--mono);letter-spacing:.08em}
+
+/* ---------- experience detail expand ---------- */
+.t-more{
+  margin-top:16px;font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:var(--accent);
+  background:transparent;border:1px solid rgba(60,232,200,.4);border-radius:3px;padding:8px 18px;
+  cursor:pointer;display:inline-flex;align-items:center;gap:10px;
+  transition:background .2s,border-color .2s,color .2s;
+}
+.t-more:hover,.t-more:focus-visible{background:var(--accent-soft);border-color:var(--accent)}
+.t-more .arr{transition:transform .35s;display:inline-block}
+.t-item.open .t-more .arr{transform:rotate(180deg)}
+.t-detail{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s cubic-bezier(.2,.6,.2,1)}
+.t-detail>div{overflow:hidden}
+.t-item.open .t-detail{grid-template-rows:1fr}
+.t-detail-inner{margin-top:20px;border-left:1px solid var(--line-strong);padding:4px 0 4px 20px}
+.d-group{margin-bottom:16px}
+.d-group:last-child{margin-bottom:4px}
+.d-group h4{font-family:var(--mono);font-size:11px;letter-spacing:.24em;color:var(--accent-2);margin-bottom:10px;font-weight:500}
+.d-item{display:flex;gap:12px;margin-bottom:9px;font-size:13.5px;color:var(--text-dim);font-weight:300;line-height:1.75}
+.d-item:last-child{margin-bottom:0}
+.d-item .n{font-family:var(--mono);color:var(--accent);font-size:12px;flex-shrink:0;padding-top:2px}
+.d-item b{color:var(--text);font-weight:500}
+.d-intro{font-size:13.5px;color:var(--text-dim);font-weight:300;margin-bottom:14px}
+
+</style>
+</head>
+<body>
+
+<div class="bg-layer bg-grid" aria-hidden="true"></div>
+<div class="bg-layer bg-mesh" aria-hidden="true"></div>
+
+<header>
+  <nav class="nav" aria-label="主导航">
+    <a class="nav-logo" href="#top" data-nav>Jerry_Lee<em>.</em>dev<span class="cur" aria-hidden="true">_</span></a>
+    <button class="nav-burger" aria-label="打开菜单" aria-expanded="false" onclick="toggleMenu(this)">MENU</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about" data-nav>关于</a></li>
+      <li><a href="#skills" data-nav>能力</a></li>
+      <li><a href="#experience" data-nav>经历</a></li>
+      <li><a href="#projects" data-nav>案例</a></li>
+      <li class="nav-cta-li"><a class="nav-cta" href="#contact" data-nav>联系我</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero" aria-label="首屏">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="hero-status rv"><span class="dot" aria-hidden="true"></span><span data-edit-id="hero-status">青岛 · 求职中 · AI产品经理 / 产品经理 / 项目经理</span></span>
+        <h1 class="hero-name rv rv-d1">
+          <span class="name-cn" data-edit-id="hero-name">李健瑞</span>
+          <span class="name-en" data-edit-id="hero-name-en">Jerry&nbsp;Lee<b>_</b></span>
+        </h1>
+        <p class="hero-role rv rv-d2">
+          <span data-edit-id="hero-role-1">AI 产品经理</span><span class="sep" aria-hidden="true">/</span><span data-edit-id="hero-role-2">信息系统项目管理师</span><span class="sep" aria-hidden="true">/</span><span data-edit-id="hero-role-3">12 年信息化经验</span>
+        </p>
+        <p class="hero-value rv rv-d3" data-edit-id="hero-value">
+          主导<strong>千万级项目</strong>交付与多款 AI 产品<strong>从 0-1 落地</strong>——从算法中台、智能问答到城市级数字平台，擅长把复杂技术转化为可交付、可复制的商业成果。
+        </p>
+        <div class="hero-ctas rv rv-d4">
+          <a class="btn btn-primary" href="#experience">查看职业经历 <span aria-hidden="true">→</span></a>
+          <a class="btn btn-ghost" href="李健瑞简历.pdf" target="_blank" rel="noopener">下载简历 PDF</a>
+        </div>
+        <!-- <div class="hero-meta rv rv-d4">
+          <div><b>12 年</b>信息化 / AI 经验</div>
+          <div><b class="o">100%</b>项目验收率</div>
+          <div><b>20+ 人</b>团队管理</div>
+          <div><b class="o">信息系统项目管理师</b>国家认证</div>
+        </div> -->
+      </div>
+      <div class="hero-visual rv rv-d2" aria-hidden="true">
+        <div class="scene">
+          <div class="scene-glow"></div>
+          <div class="cube"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="cube-core"><b>AI 产品</b>0 → 1 落地</div>
+          <div class="chip c1"><b>LLM</b> · RAG · Agent</div>
+          <div class="chip c2"><b>GIS</b> · 数字孪生</div>
+          <div class="chip c3"><b>¥1705 万</b> 项目交付</div>
+          <div class="chip c4"><b>Agentic</b> Workflow</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll" aria-hidden="true">SCROLL</div>
+  </section>
+
+  <!-- ================= STATS ================= -->
+  <section class="stats" aria-label="关键数据">
+    <div class="wrap stats-grid">
+      <div class="stat rv"><b>12 <span class="u">年</span></b><span>信息化 &amp; AI 领域经验</span></div>
+      <div class="stat rv rv-d1"><b>1705.5 <span class="u">万</span></b><span>西海岸城市云脑项目总额</span></div>
+      <div class="stat rv rv-d2"><b>100<span class="u">%</span></b><span>主导项目验收率</span></div>
+      <div class="stat rv rv-d3"><b>3 万<span class="u">+</span></b><span>智慧社区平台用户</span></div>
+    </div>
+  </section>
+
+  <!-- ================= ABOUT ================= -->
+  <section id="about" aria-label="关于我">
+    <div class="wrap">
+      <p class="kicker rv">01 / 关于我</p>
+      <h2 class="sec-title rv rv-d1" data-edit-id="about-title">懂技术、能落地、可兜底</h2>
+      <div class="about-grid">
+        <div>
+          <p class="about-lead rv rv-d1" data-edit-id="about-lead">
+            我是李健瑞，一名<span class="hl">长期奋战在 AI 与复杂项目交付一线</span>的产品与项目管理者——既能写 PRD、定方案，也能和算法团队对齐技术路线、向政府客户做汇报。
+          </p>
+          <p class="about-rest rv rv-d2" data-edit-id="about-rest-1">
+            过去 12 年，我从产品设计起步，先后转型 AI 产品经理（智慧城市 / 安防）、IT 项目经理（外贸供应链），再到公司 AI 业务负责人。主导过 AI 哨兵算法中台、智搜智能问答、西海岸城市云脑（1705.5 万）、数字沂源（1142 万）等产品的 0-1 落地与交付。
+          </p>
+          <p class="about-rest rv rv-d3" data-edit-id="about-rest-2">
+            我的工作风格是<strong>以终为始</strong>：先明确验收口径，再倒推产品与技术方案；习惯用敏捷方式平衡进度、成本与质量，用标准化 SOP 沉淀每一次交付。目前专注于 AI 解决方案的商业化落地与组织 AI 能力建设。
+          </p>
+        </div>
+        <aside class="id-card rv rv-d2" aria-label="基本信息">
+          <div class="id-row"><span class="k">name</span><span class="v" data-edit-id="card-name">李健瑞</span></div>
+          <div class="id-row"><span class="k">base</span><span class="v" data-edit-id="card-base">青岛</span></div>
+          <div class="id-row"><span class="k">target</span><span class="v" data-edit-id="card-target">AI产品经理 · 产品经理 · 项目经理</span></div>
+          <div class="id-row"><span class="k">cert</span><span class="v" data-edit-id="card-cert">信息系统项目管理师（高级）</span></div>
+          <div class="id-row"><span class="k">email</span><span class="v">344340577@qq.com</span></div>
+          <div class="id-row"><span class="k">phone</span><span class="v">13805328832</span></div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SKILLS ================= -->
+  <section id="skills" aria-label="能力矩阵">
+    <div class="wrap">
+      <p class="kicker rv">02 / 能力矩阵</p>
+      <h2 class="sec-title rv rv-d1" data-edit-id="skills-title">三条能力线，指向同一件事：交付</h2>
+      <p class="sec-sub rv rv-d1" data-edit-id="skills-sub">能力按产出组织，而非工具罗列——每一项都对应可验证的产品或项目结果。</p>
+      <div class="skill-grid">
+        <article class="skill-card rv" data-tilt>
+          <div class="skill-head"><h3 data-edit-id="skill-1-title">产品及方案能力</h3><span class="idx">CAP-01</span></div>
+          <p data-edit-id="skill-1-desc">能力覆盖市场调研、需求调研、解决方案、产品规划、需求分析、交互设计、视觉设计，能跨岗位跨部门高效沟通，推动技术方案落地，擅长B端/G端复杂需求的梳理与产品化实现。</p>
+          <div class="skill-tools"><span>LangChain</span><span>QLoRA</span><span>RAG</span><span>Agent</span><span>WorkFlow</span><span>CV</span></div>
+        </article>
+        <article class="skill-card rv rv-d1" data-tilt>
+          <div class="skill-head"><h3 data-edit-id="skill-2-title">产品全周期能力</h3><span class="idx">CAP-02</span></div>
+          <p data-edit-id="skill-2-desc">覆盖<b>市场调研 → 需求分析 → 解决方案 → 产品规划 → 评审交付</b>的完整链路，擅长 B 端 / G 端复杂需求的梳理与产品化实现，能把客户模糊诉求转化为可验收的功能边界。</p>
+          <div class="skill-tools"><span>MRD / PRD</span><span>需求分析</span><span>方案编制</span><span>客户验证</span></div>
+        </article>
+        <article class="skill-card rv rv-d2" data-tilt>
+          <div class="skill-head"><h3 data-edit-id="skill-3-title">项目管理与交付</h3><span class="idx">CAP-03</span></div>
+          <p data-edit-id="skill-3-desc">主导<b>千万级项目</b>全生命周期交付，管理<b>20+人</b>项目团队；精通敏捷开发、成本/进度/质量综合协调；善于跨部门协作、供应商管理；具备等保测评、项目审计、ICP 与云平台实操经验，<b>项目验收率 100%</b>。</p>
+          <div class="skill-tools"><span>敏捷开发</span><span>供应商管理</span><span>等保 / 审计</span><span>验收交付</span></div>
+        </article>
+        <article class="skill-card rv rv-d3" data-tilt>
+          <div class="skill-head"><h3 data-edit-id="skill-4-title">行业认知与商业转化</h3><span class="idx">CAP-04</span></div>
+          <p data-edit-id="skill-4-desc">深耕<b>智慧城市、智慧安防、智慧应急、外贸供应链</b>领域；具备 AI 业务体系搭建经验——从商业模式画布、分客群推广策略到销售弹药库与陪访打单，懂技术也懂怎么把它卖出去。</p>
+          <div class="skill-tools"><span>智慧城市</span><span>外贸供应链</span><span>三维可视化</span><span>低空经济</span><span>国产云平台</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= EXPERIENCE (before projects) ================= -->
+  <section id="experience" aria-label="职业经历">
+    <div class="wrap">
+      <p class="kicker rv">03 / 职业经历</p>
+      <h2 class="sec-title rv rv-d1" data-edit-id="exp-title">从产品设计到 AI 交付一线</h2>
+      <p class="sec-sub rv rv-d1" data-edit-id="exp-sub">四段经历，一条主线：让复杂技术变成可交付、可验收的成果。</p>
+      <div class="timeline">
+        <div class="t-item rv">
+          <span class="t-time" data-edit-id="exp-1-time">2026.06 — 至今</span>
+          <div class="t-head"><h3 data-edit-id="exp-1-org">青岛鑫雷音商贸有限公司</h3><span class="t-role" data-edit-id="exp-1-role">部门主管 · AI 业务负责人</span></div>
+          <div class="t-tags"><span data-edit-id="exp-1-tag">政府供货企业</span></div>
+          <p data-edit-id="exp-1-desc">支撑公司由硬件渠道商向 <b>AI 解决方案服务商</b>战略转型：搭建三阶段销售-交付作战体系，开发报价/合同/周报等 AI 提效工具，产出销售弹药库与分级话术，建立陪访联合打单机制，并以分层培训体系推动全员 AI 能力建设、沉淀企业级 AI 知识底座。</p>
+          <button class="t-more" aria-expanded="false"><span class="lbl">详细了解</span><span class="arr" aria-hidden="true">↓</span></button>
+          <div class="t-detail"><div><div class="t-detail-inner">
+            <p class="d-intro" data-edit-id="exp-1-intro">担任 AI 业务负责人岗位，支撑公司由硬件渠道商向 AI 解决方案服务商的战略业务拓展。</p>
+            <div class="d-group">
+              <div class="d-item"><span class="n">01</span><p data-edit-id="exp-1-l1"><b>AI 产品销售体系搭建：</b> 基于组织现状与转型目标，牵头制定业务规划，搭建销售-交付作战体系：完成三阶段（筹备/验证/规模）发展路线图、商业模式画布、作战地图、团队激活计划、分客群推广策略，沉淀可复用的标准化方法论。</p></div>
+              <div class="d-item"><span class="n">02</span><p data-edit-id="exp-1-l2"><b>内部提效工具与 Skill 开发：</b> 负责业务与流程的 AI 赋能：调研重复性高人力消耗工作，开发报价单生成、合同生成、经营周报、逾期库存周报、企业信息搜集、简历自动下载评估等效率工具，进行组织内部效能提升的同时反哺销售场景案例。</p></div>
+              <div class="d-item"><span class="n">03</span><p data-edit-id="exp-1-l3"><b>团队销售能力赋能：</b> 规划、产出并持续迭代销售弹药库（销售工具包）：通用报价单、通用解决方案、代理商/企业/决策层分级话术、常见问答与异议手册、产品能力全景图、代理商调研问卷等，为销售触达客户提供内容支撑。</p></div>
+              <div class="d-item"><span class="n">04</span><p data-edit-id="exp-1-l4"><b>渠道打通及客户触达：</b> 对存量代理商进行筛选、触达，打通现有销售渠道链路。建立陪访联合打单机制，陪同前线销售及代理面向重点客户开展现场交流、演示与咨询，以技术兜底促成终端成交。</p></div>
+              <div class="d-item"><span class="n">05</span><p data-edit-id="exp-1-l5"><b>项目推进与客户成功：</b> 以客户成功为导向，借内外部资源主导项目 0-1 交付全流程：触达调研、方案制定、合作建立、培训服务、实施交付、验收回款等。建立客户分级与持续回访体系，沉淀标准化交付 SOP 与行业方案包。</p></div>
+              <div class="d-item"><span class="n">06</span><p data-edit-id="exp-1-l6"><b>团队 AI 能力赋能：</b> 以分层培训与知识赋能体系提升全员 AI 素养、孵化业务线「AI 领袖」：开展培训会、理论普及、方案宣讲、共创会、交流答疑等形式推动全员 AI 自用，并将知识内容沉淀企业级 AI 知识底座。</p></div>
+            </div>
+          </div></div></div>
+        </div>
+        <div class="t-item rv">
+          <span class="t-time" data-edit-id="exp-2-time">2025.05 — 2026.04</span>
+          <div class="t-head"><h3 data-edit-id="exp-2-org">青岛新型国际贸易综合服务有限公司</h3><span class="t-role" data-edit-id="exp-2-role">IT 项目经理</span></div>
+          <div class="t-tags"><span data-edit-id="exp-2-tag">山东外贸单一窗口</span></div>
+          <p data-edit-id="exp-2-desc">统筹公司对外项目全生命周期管理与新产品迭代：<b>外贸综合服务系统 0-1 构建</b>（八大模块）并完成验收回款；主导山东中兴外综服平台及小程序建设；完成泛外综服、潍坊农综区、威海智慧谷等 5+ 重点项目方案编制。</p>
+          <button class="t-more" aria-expanded="false"><span class="lbl">详细了解</span><span class="arr" aria-hidden="true">↓</span></button>
+          <div class="t-detail"><div><div class="t-detail-inner">
+            <div class="d-group">
+              <h4 data-edit-id="exp-2-duty-h">职责</h4>
+              <div class="d-item"><span class="n">01</span><p data-edit-id="exp-2-d1">统筹公司对外项目全生命周期管理。</p></div>
+              <div class="d-item"><span class="n">02</span><p data-edit-id="exp-2-d2">负责新产品全生命周期管理及现有产品迭代优化。</p></div>
+              <div class="d-item"><span class="n">03</span><p data-edit-id="exp-2-d3">协助项目机会点挖掘，输出可行性方案并推动落地。</p></div>
+            </div>
+            <div class="d-group">
+              <h4 data-edit-id="exp-2-perf-h">业绩</h4>
+              <div class="d-item"><span class="n">01</span><p data-edit-id="exp-2-p1"><b>项目交付：</b>对山东中兴供应链项目进行项目过程管理，完成山东中兴外综服平台及小程序的从 0-1 建设，实现项目验收与回款。</p></div>
+              <div class="d-item"><span class="n">02</span><p data-edit-id="exp-2-p2"><b>产品落地：</b>主导外贸综合服务系统 0-1 构建，包括外综风控、进口供应链、出口供应链、智慧关务、数据大屏、底层账户、客户端、小程序八大模块。进出口供应链模块覆盖合作方管理、协议管理、合同管理、商品管理、订单管理、仓储管理、物流管理、应收/应付结算、发票管理、退税管理、财务管理、业务报表等核心流程。</p></div>
+              <div class="d-item"><span class="n">03</span><p data-edit-id="exp-2-p3"><b>门户网站设计：</b>完成口岸外综服门户网站初版设计（因研发资源优先级问题暂未完成开发），包括外贸信息化、外贸综合服务、数智能力服务、交易撮合平台、外贸咨询、伙伴入驻、个人中心、企业管理等模块。</p></div>
+              <div class="d-item"><span class="n">04</span><p data-edit-id="exp-2-p4"><b>产品迭代：</b>跟进自贸区管委、自贸区税务局需求，完成离岸达平台产品迭代，为自贸港离岸贸易业务监管提供产品及技术支持。</p></div>
+              <div class="d-item"><span class="n">05</span><p data-edit-id="exp-2-p5"><b>方案支撑：</b>完成泛外贸综合服务平台、潍坊国家农综区、威海智慧谷跨境电商产业园等 5+ 重点项目方案编制。</p></div>
+            </div>
+          </div></div></div>
+        </div>
+        <div class="t-item rv">
+          <span class="t-time" data-edit-id="exp-3-time">2019.10 — 2025.05</span>
+          <div class="t-head"><h3 data-edit-id="exp-3-org">以萨技术股份有限公司</h3><span class="t-role" data-edit-id="exp-3-role">AI 产品经理</span></div>
+          <div class="t-tags"><span data-edit-id="exp-3-tag-1">全球独角兽 500 强</span><span data-edit-id="exp-3-tag-2">专精特新小巨人</span></div>
+          <p data-edit-id="exp-3-desc">主导 AI 哨兵、智搜等产品 <b>0-1 落地</b>，以及三维可视化、低空资产管理、应急防汛一张图等多产品规划；统筹千万/百万级项目交付（城市云脑、智慧社区、数字沂源等），虚线管理跨部门成员与供应商，<b>项目验收率 100%</b>。</p>
+          <button class="t-more" aria-expanded="false"><span class="lbl">详细了解</span><span class="arr" aria-hidden="true">↓</span></button>
+          <div class="t-detail"><div><div class="t-detail-inner">
+            <div class="d-group">
+              <h4 data-edit-id="exp-3-duty-h">职责</h4>
+              <div class="d-item"><span class="n">01</span><p data-edit-id="exp-3-d1">主导新产品及定制产品的从 0-1 规划、设计与落地。</p></div>
+              <div class="d-item"><span class="n">02</span><p data-edit-id="exp-3-d2">负责主干产品的需求收集与迭代。</p></div>
+              <div class="d-item"><span class="n">03</span><p data-edit-id="exp-3-d3">统筹项目管理，虚线管理跨部门项目成员（销售、采购、方案、研发、算法、交付）及外部供应商确保项目交付。</p></div>
+            </div>
+            <div class="d-group">
+              <h4 data-edit-id="exp-3-perf-h">成果</h4>
+              <div class="d-item"><span class="n">01</span><p data-edit-id="exp-3-p1"><b>AI 产品创新：</b>主导 AI 哨兵（算法管理平台）、智搜（智能问答）等产品 0-1 落地，实现通过工作流编排算法、自然语言检索结构化/非结构化数据、生成案事件材料等能力。</p></div>
+              <div class="d-item"><span class="n">02</span><p data-edit-id="exp-3-p2"><b>定制产品设计：</b>主导三维可视化平台、低空资产管理平台、应急防汛一张图、交通安全管控一张图、智慧影都综合服务平台等多产品的从 0-1 规划、设计与落地。</p></div>
+              <div class="d-item"><span class="n">03</span><p data-edit-id="exp-3-p3"><b>项目管理与交付：</b>统筹千万、百万级的项目交付，包括：西海岸城市云脑、西海岸城市云脑云资源租赁、东方影都智慧社区、数字沂源、西海岸停车管理信息平台等。进行项目前期需求调研与机会点导入，中期产品设计、研发推进与干系人汇报，后期验收、审计及运维的全流程管理，项目验收率 100%。</p></div>
+            </div>
+          </div></div></div>
+        </div>
+        <div class="t-item rv">
+          <span class="t-time" data-edit-id="exp-4-time">2015.10 — 2019.05</span>
+          <div class="t-head"><h3 data-edit-id="exp-4-org">青岛雨诺网络信息股份有限公司</h3><span class="t-role" data-edit-id="exp-4-role">设计经理 / 主管</span></div>
+          <div class="t-tags"><span data-edit-id="exp-4-tag">高新技术企业</span></div>
+          <p data-edit-id="exp-4-desc">负责 ERP、BI 企业级产品 UI/UX 设计与设计规范制定；<b>从 0-1 组建设计团队</b>，主导张仲景微信商城、支付宝未来药店等界面设计，完成企业全渠道品牌视觉体系搭建。</p>
+          <button class="t-more" aria-expanded="false"><span class="lbl">详细了解</span><span class="arr" aria-hidden="true">↓</span></button>
+          <div class="t-detail"><div><div class="t-detail-inner">
+            <div class="d-group">
+              <h4 data-edit-id="exp-4-duty-h">职责</h4>
+              <div class="d-item"><span class="n">01</span><p data-edit-id="exp-4-d1">负责 ERP、BI 等企业级产品视觉/交互设计，制定设计规范。</p></div>
+              <div class="d-item"><span class="n">02</span><p data-edit-id="exp-4-d2">负责线上、线下宣传物料设计。</p></div>
+              <div class="d-item"><span class="n">03</span><p data-edit-id="exp-4-d3">组建并管理设计团队，统筹品牌视觉体系搭建。</p></div>
+            </div>
+            <div class="d-group">
+              <h4 data-edit-id="exp-4-perf-h">成果</h4>
+              <div class="d-item"><span class="n">01</span><p data-edit-id="exp-4-p1"><b>产品设计：</b>主导 ERP、BI 系统、张仲景微信商城、支付宝未来药店等产品 UI/UX 设计。</p></div>
+              <div class="d-item"><span class="n">02</span><p data-edit-id="exp-4-p2"><b>团队建设：</b>从 0-1 组建设计团队，建立设计规范与工作流程。</p></div>
+              <div class="d-item"><span class="n">03</span><p data-edit-id="exp-4-p3"><b>品牌体系：</b>完成企业官网、展会、宣传物料等全渠道视觉体系搭建。</p></div>
+            </div>
+          </div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PROJECTS ================= -->
+  <section id="projects" aria-label="项目案例">
+    <div class="wrap">
+      <p class="kicker rv">04 / 项目案例</p>
+      <h2 class="sec-title rv rv-d1" data-edit-id="proj-title">用交付记录说话</h2>
+      <p class="sec-sub rv rv-d1" data-edit-id="proj-sub">按「背景 → 角色 → 结果」组织，金额与验收状态均来自真实项目档案。</p>
+      <div class="proj">
+
+        <article class="case rv" data-tilt>
+          <div class="case-visual">
+            <span class="c-year">2022 — 2023</span>
+            <div class="c-amount" data-edit-id="case-1-amount">¥1705.5 万<small>城市级 · 区级城市云脑</small></div>
+          </div>
+          <div class="case-body">
+            <div class="case-tags"><span>产品 + 项目</span><span class="t2">二三维 GIS</span><span class="t2">视频联网</span><span class="t2">国产化云</span></div>
+            <h3 data-edit-id="case-1-title">西海岸城市云脑 + 云资源租赁（一/二期）</h3>
+            <p class="c-desc" data-edit-id="case-1-desc">西海岸工信局牵头的区级城市云脑。从技术方案撰写、四大平台需求设计，到中期接任项目经理统筹供应商管理，最终完成核心模块交付。</p>
+            <div class="case-facts">
+              <div><b>ROLE</b><p data-edit-id="case-1-role">产品需求设计 + 中期接任项目经理</p></div>
+              <div><b>RESULT</b><p data-edit-id="case-1-result">汇聚 3 万+ 路监控（5000 路并发）、450+ 物联设备；通过三级等保与审计；国产化改造服务 10+ 委办局、50+ 系统</p></div>
+              <div><b>STATUS</b><p data-edit-id="case-1-status">2023.08 验收 · 二期服务中</p></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="case rv" data-tilt>
+          <div class="case-visual">
+            <span class="c-year">2024 — 2025</span>
+            <div class="c-amount cy" data-edit-id="case-2-amount">AI × LLM<small>智能问答 · 算法中台</small></div>
+          </div>
+          <div class="case-body">
+            <div class="case-tags"><span>AI 产品 0-1</span><span class="t2">RAG</span><span class="t2">Agentic Workflow</span></div>
+            <h3 data-edit-id="case-2-title">智搜 · GA 场景智能问答系统</h3>
+            <p class="c-desc" data-edit-id="case-2-desc">结合意图路由、RAG 与 Function Call 编排工作流与智能体，实现案事件材料生成、档案/轨迹分析、布控计划自动配置等能力，支持警务通与 WEB 双端。</p>
+            <div class="case-facts">
+              <div><b>ROLE</b><p data-edit-id="case-2-role">产品负责人：大模型选型、Prompt/上下文工程、评测体系</p></div>
+              <div><b>RESULT</b><p data-edit-id="case-2-result">分支工作流持续迭代并纳入主干问答体系，意图动态路由分发，灰度发布上线</p></div>
+              <div><b>STACK</b><p data-edit-id="case-2-stack">LLM · RAG · Function Call · 多轮评测</p></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="case rv" data-tilt>
+          <div class="case-visual">
+            <span class="c-year">2024.12 — 2025.05</span>
+            <div class="c-amount cy" data-edit-id="case-3-amount">算法中台<small>标准化复用 · 在线编排</small></div>
+          </div>
+          <div class="case-body">
+            <div class="case-tags"><span>AI 产品 0-1</span><span class="t2">算法管理</span><span class="t2">任务编排</span></div>
+            <h3 data-edit-id="case-3-title">AI 哨兵 · 算法管理平台</h3>
+            <p class="c-desc" data-edit-id="case-3-desc">面向智慧城市/安防场景的 AI 算法中台：本地与外部算法加载、生态体联动编排、视频/图片流管理、识别任务与事件中心、算力调配与语义检索。</p>
+            <div class="case-facts">
+              <div><b>ROLE</b><p data-edit-id="case-3-role">MRD 撰写、立项评审、PRD 输出与技术方案拉通</p></div>
+              <div><b>RESULT</b><p data-edit-id="case-3-result">V0.9 按期上线，实验局验证通过；核心主干 + MVP 分支同步推进</p></div>
+              <div><b>MODE</b><p data-edit-id="case-3-mode">敏捷开发 · 进度/成本/质量平衡</p></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="case rv" data-tilt>
+          <div class="case-visual">
+            <span class="c-year">2022 — 2023</span>
+            <div class="c-amount" data-edit-id="case-4-amount">¥1142 万<small>县级 · 智能指挥中心</small></div>
+          </div>
+          <div class="case-body">
+            <div class="case-tags"><span>产品 + 项目</span><span class="t2">一张图</span><span class="t2">低空经济</span></div>
+            <h3 data-edit-id="case-4-title">数字沂源 · 县级城市智能指挥中心</h3>
+            <p class="c-desc" data-edit-id="case-4-desc">覆盖数据中台、视频场景应用、应急防汛与交通管控一张图、低空资产管理、疫情防控感知、智慧警务/公安等子系统。</p>
+            <div class="case-facts">
+              <div><b>ROLE</b><p data-edit-id="case-4-role">四个子平台的需求调研、产品设计、开发对接与客户汇报</p></div>
+              <div><b>SCOPE</b><p data-edit-id="case-4-scope">应急防汛 / 交通管控一张图 · 低空资产管理平台</p></div>
+              <div><b>CLIENT</b><p data-edit-id="case-4-client">沂源县大数据</p></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="case rv" data-tilt>
+          <div class="case-visual">
+            <span class="c-year">2023 — 2024</span>
+            <div class="c-amount" data-edit-id="case-5-amount">¥262.6 万<small>标杆 · 3 万+ 用户</small></div>
+          </div>
+          <div class="case-body">
+            <div class="case-tags"><span>产品 + 项目</span><span class="t2">智慧社区</span><span class="t2">党建引领</span></div>
+            <h3 data-edit-id="case-5-title">东方影都智慧社区</h3>
+            <p class="c-desc" data-edit-id="case-5-desc">灵山卫街道牵头的智慧社区标杆：整合门禁、人脸/车牌识别、人证核录，围绕党建、治安、治理、便民四大领域构建人/事/车/房/商户综合服务平台。</p>
+            <div class="case-facts">
+              <div><b>ROLE</b><p data-edit-id="case-5-role">0-1 全流程统筹：进度/质量/供应商/验收 + 产品设计评审</p></div>
+              <div><b>RESULT</b><p data-edit-id="case-5-result">专家评审与项目验收通过，用户 3 万+，无镀金蔓延</p></div>
+              <div><b>SCOPE</b><p data-edit-id="case-5-scope">人车房档案 · 预警事件 · 便民服务 · 党建一张图</p></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="case rv" data-tilt>
+          <div class="case-visual">
+            <span class="c-year">2025 — 2026</span>
+            <div class="c-amount cy" data-edit-id="case-6-amount">0 → 1<small>外贸综合服务系统</small></div>
+          </div>
+          <div class="case-body">
+            <div class="case-tags"><span>产品 0-1</span><span class="t2">供应链</span><span class="t2">八大模块</span></div>
+            <h3 data-edit-id="case-6-title">外贸综合服务系统（山东中兴供应链）</h3>
+            <p class="c-desc" data-edit-id="case-6-desc">从 0-1 构建外综风控、进/出口供应链、智慧关务、数据大屏、底层账户、客户端、小程序八大模块，覆盖订单、仓储、物流、结算、退税等核心流程。</p>
+            <div class="case-facts">
+              <div><b>ROLE</b><p data-edit-id="case-6-role">IT 项目经理：全生命周期管理 + 平台产品迭代</p></div>
+              <div><b>RESULT</b><p data-edit-id="case-6-result">完成 0-1 建设、项目验收与回款；同步完成 5+ 重点项目方案编制</p></div>
+              <div><b>EXTRA</b><p data-edit-id="case-6-extra">离岸达平台迭代，支撑自贸港离岸贸易监管</p></div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CERTS ================= -->
+  <section aria-label="教育与证书">
+    <div class="wrap">
+      <p class="kicker rv">05 / 教育与认证</p>
+      <div class="cert-band">
+        <div class="cert-card rv">
+          <div class="c-ico">CERT / 01</div>
+          <h3 data-edit-id="cert-1-title">信息系统项目管理师</h3>
+          <p data-edit-id="cert-1-desc">国家认证高级资格 · 具备千万级项目的立项、实施、验收与审计全流程管理能力</p>
+        </div>
+        <div class="cert-card rv rv-d1">
+          <div class="c-ico">EDU / 02</div>
+          <h3 data-edit-id="cert-2-title">青岛农业大学海都学院</h3>
+          <p data-edit-id="cert-2-desc">电气工程及其自动化 · 全日制统招本科（2010 — 2014）</p>
+        </div>
+        <div class="cert-card rv rv-d2">
+          <div class="c-ico">LANG / 03</div>
+          <h3 data-edit-id="cert-3-title">英语 · CET-4</h3>
+          <p data-edit-id="cert-3-desc">读写能力良好 · 听说能力熟练，可支撑技术方案与客户沟通</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section id="contact" class="contact" aria-label="联系我">
+    <div class="wrap">
+      <p class="kicker rv" style="justify-content:center">06 / 联系</p>
+      <h2 class="rv rv-d1" data-edit-id="contact-title">有 AI 产品或复杂项目<br>需要 <em>从 0 到 1</em> 落地？</h2>
+      <p class="c-sub rv rv-d2" data-edit-id="contact-sub">欢迎交流 AI 产品规划、千万级项目交付或组织 AI 转型——青岛本地可面谈，远程亦可协作。</p>
+      <div class="contact-ctas rv rv-d3">
+        <a class="btn btn-primary" href="mailto:344340577@qq.com">发送邮件</a>
+        <a class="btn btn-ghost" href="李健瑞简历.pdf" target="_blank" rel="noopener">下载简历 PDF</a>
+      </div>
+      <div class="contact-info rv rv-d4">
+        <a href="mailto:344340577@qq.com">✉ 344340577@qq.com</a>
+        <a href="tel:13805328832">☎ 13805328832</a>
+        <span class="loc">📍 青岛</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>© 2026 李健瑞 · AI 产品经理 / 信息系统项目管理师</span>
+    <span>QINGDAO · SHANDONG · CN</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- mobile nav ---------- */
+  window.toggleMenu = function(btn){
+    var links = document.getElementById("navLinks");
+    var open = links.classList.toggle("open");
+    btn.setAttribute("aria-expanded", open ? "true" : "false");
+  };
+  document.querySelectorAll("[data-nav]").forEach(function(a){
+    a.addEventListener("click", function(){
+      document.getElementById("navLinks").classList.remove("open");
+    });
+  });
+
+  /* ---------- experience detail expand ---------- */
+  document.querySelectorAll(".t-more").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var item = btn.closest(".t-item");
+      var open = item.classList.toggle("open");
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+      var lbl = btn.querySelector(".lbl");
+      if (lbl) lbl.textContent = open ? "收起详情" : "详细了解";
+    });
+  });
+
+  /* ---------- scroll reveal ---------- */
+  var revealEls = document.querySelectorAll(".rv");
+  if (reduceMotion || !("IntersectionObserver" in window)) {
+    revealEls.forEach(function(el){ el.classList.add("in"); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+    revealEls.forEach(function(el){ io.observe(el); });
+  }
+
+  /* ---------- 3D tilt for cards (desktop + motion allowed only) ---------- */
+  var canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  if (canHover && !reduceMotion) {
+    var MAX_TILT = 5;
+    document.querySelectorAll("[data-tilt]").forEach(function(card){
+      var raf = null;
+      card.addEventListener("mousemove", function(e){
+        if (raf) return;
+        raf = requestAnimationFrame(function(){
+          var r = card.getBoundingClientRect();
+          var px = (e.clientX - r.left) / r.width - 0.5;
+          var py = (e.clientY - r.top) / r.height - 0.5;
+          card.style.transform =
+            "perspective(900px) rotateX(" + (-py * MAX_TILT).toFixed(2) + "deg) rotateY(" + (px * MAX_TILT).toFixed(2) + "deg) translateY(-3px)";
+          raf = null;
+        });
+      });
+      card.addEventListener("mouseleave", function(){
+        card.style.transform = "";
+      });
+    });
+  }
+
+})();
+</script>
+</body>
+</html>
