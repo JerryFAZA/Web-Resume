@@ -320,12 +320,22 @@ h1.hero-name .name-en b{color:var(--accent);font-weight:300}
 .case-visual .c-amount{font-family:var(--mono);font-size:clamp(17px,1.8vw,23px);color:var(--accent-2);font-weight:500;margin-top:auto;line-height:1.35}
 .case-visual .c-amount small{display:block;font-size:10.5px;color:var(--text-faint);font-weight:400;margin-top:5px;letter-spacing:.08em}
 .case-visual .c-amount.cy{color:var(--accent)}
-.case-body{padding:26px 30px}
+.case-body{padding:28px 34px}
 .case-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
 .case-tags span{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--accent);border:1px solid rgba(60,232,200,.35);border-radius:3px;padding:3px 11px;background:var(--accent-soft)}
 .case-tags span.t2{color:var(--text-dim);border-color:var(--line);background:transparent}
-.case-body h3{font-size:20px;font-weight:700;letter-spacing:.02em;margin-bottom:8px}
-.case-body .c-desc{color:var(--text-dim);font-size:14px;font-weight:300;max-width:640px}
+.case-body h3{font-size:20px;font-weight:700;letter-spacing:.02em;margin-bottom:10px}
+.c-label{font-family:var(--mono);font-size:10.5px;letter-spacing:.24em;color:var(--text-faint);margin:14px 0 6px;font-weight:500}
+.case-body .c-desc{color:var(--text-dim);font-size:14px;font-weight:300;line-height:1.85;max-width:720px}
+.case-achv{margin-top:20px;border-left:2px solid rgba(60,232,200,.5);padding:2px 0 2px 16px;max-width:720px}
+.case-achv b{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.24em;color:var(--accent);margin-bottom:10px;font-weight:400}
+.case-achv ul{list-style:none}
+.case-achv li{position:relative;padding-left:18px;font-size:13.5px;color:var(--text);font-weight:400;line-height:1.5;margin-bottom:7px}
+.case-achv li:last-child{margin-bottom:0}
+.case-achv li::before{content:"▸";position:absolute;left:0;top:0;color:var(--accent);font-size:11px;line-height:1.5}
+.case-eff{border-left-color:rgba(255,158,100,.55)}
+.case-eff b{color:var(--accent-2)}
+.case-eff li::before{color:var(--accent-2)}
 .case-facts{margin-top:16px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .case-facts div{border-left:2px solid rgba(60,232,200,.5);padding-left:12px}
 .case-facts b{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;color:var(--text-faint);margin-bottom:4px;font-weight:400}
@@ -435,7 +445,7 @@ footer{border-top:1px solid var(--line);padding:28px 0}
         </p>
         -->
         <p class="hero-value rv rv-d3" data-edit-id="hero-value">
-          主导千万级项目交付，推动多款企业战略级基线产品从0-1落地；经验横跨<strong>地市千万级项目管理与多垂直领域产品落地</strong>，擅长将复杂业务需求转化为可交付、可复制的产品成果。<strong>积极拥抱 AI，持续拓展个人与企业的能力半径。</strong>
+          主导千万级项目交付，推动多款企业战略级基线产品从0-1落地；经验横跨<strong>地市千万级项目管理与多领域垂直产品落地</strong>，既能挖需求、定方案、搞产品，也能聊技术、推落地、做汇报，擅长将复杂业务需求转化为可交付、可复制的产品成果。<strong>积极拥抱AI，持续探索、不断拓宽个人与企业的能力半径。</strong>
         </p>
         <div class="hero-ctas rv rv-d4">
           <a class="btn btn-primary" href="#experience">查看职业经历 <span aria-hidden="true">→</span></a>
@@ -487,9 +497,9 @@ footer{border-top:1px solid var(--line);padding:28px 0}
           </p>
           <p class="about-rest rv rv-d2" data-edit-id="about-rest-1">
             <span class="lead-line">12 年信息化经验，为我沉淀了三大核心能力：<br>
-              <strong>全周期推进能力</strong> — 覆盖市场调研、需求分析、方案设计、产品规划到交付验收的端到端把控；<br>
-              <strong>项目管理能力</strong> — 精通敏捷开发、跨部门协作与供应商管理，可依据组织要求灵活调整管理策略，统筹成本、进度、质量目标；<br>
-              <strong>IT/AI技术能力</strong> — 具备信息化及AI领域相关技术知识，可综合评估多方因素与技术团队制定最佳落地方案</span>
+              <strong>全周期推进能力</strong> — 覆盖市场调研、需求分析、方案设计、产品规划到交付验收的端到端全周期推进能力；<br>
+              <strong>项目管理能力</strong> — 精通敏捷开发、跨部门协作与供应商管理，可依据组织要求灵活调整管理策略，统筹、平衡成本、进度、质量目标；<br>
+              <strong>IT/AI技术能力</strong> — 具备信息化及AI领域相关技术知识，可综合评估多方因素与技术团队制定最佳落地方案。</span>
           </p>
         </div>
         <aside class="id-card rv rv-d2" aria-label="基本信息">
@@ -594,15 +604,17 @@ footer{border-top:1px solid var(--line);padding:28px 0}
           <div class="t-detail"><div><div class="t-detail-inner">
             <div class="d-group">
               <h4 data-edit-id="exp-3-duty-h">职责</h4>
-              <div class="d-item"><span class="n">01</span><p data-edit-id="exp-3-d1">主导新产品及定制产品的从 0-1 规划、设计与落地。</p></div>
-              <div class="d-item"><span class="n">02</span><p data-edit-id="exp-3-d2">负责主干产品的需求收集与迭代。</p></div>
-              <div class="d-item"><span class="n">03</span><p data-edit-id="exp-3-d3">统筹项目管理，虚线管理跨部门项目成员（销售、采购、方案、研发、算法、交付）及外部供应商确保项目交付。</p></div>
+              <div class="d-item"><span class="n">01</span><p data-edit-id="exp-3-d1">主导AI产品创新。</p></div>
+              <div class="d-item"><span class="n">02</span><p data-edit-id="exp-3-d2">主导新产品线及定制产品的从 0-1 规划、设计与落地。</p></div>
+              <div class="d-item"><span class="n">03</span><p data-edit-id="exp-3-d3">负责基线产品的需求收集与迭代。</p></div>
+              <div class="d-item"><span class="n">04</span><p data-edit-id="exp-3-d3">统筹项目管理，虚线管理跨部门项目成员及外部供应商确保项目交付。</p></div>
             </div>
             <div class="d-group">
               <h4 data-edit-id="exp-3-perf-h">成果</h4>
-              <div class="d-item"><span class="n">01</span><p data-edit-id="exp-3-p1"><b>AI 产品创新：</b>主导 AI 哨兵（算法管理平台）、智搜（智能问答）等产品 0-1 落地，实现通过工作流编排算法、自然语言检索结构化/非结构化数据、生成案事件材料等能力。</p></div>
-              <div class="d-item"><span class="n">02</span><p data-edit-id="exp-3-p2"><b>定制产品设计：</b>主导西海岸三维可视化平台、智慧影都综合服务平台、低空资产管理平台、应急防汛一张图、交通安全管控一张图等多产品的从 0-1 规划、设计与落地。</p></div>
-              <div class="d-item"><span class="n">03</span><p data-edit-id="exp-3-p3"><b>项目管理与交付：</b>统筹千万、百万级的项目交付，包括：西海岸城市云脑、西海岸城市云脑云资源租赁、东方影都智慧社区、数字沂源、西海岸停车管理信息平台等。进行项目前期需求调研与机会点导入，中期产品设计、研发推进与干系人汇报，后期验收、审计及运维的全流程管理，项目验收率 100%。</p></div>
+              <div class="d-item"><span class="n">01</span><p data-edit-id="exp-3-p1"><b>AI 产品创新：</b>主导AI哨兵（算法管理平台）、智搜（GA智能问答）等产品 0-1 落地，实现通过工作流编排算法；自然语言AI问答，自主检索结构化/非结构化数据；分析人员、车辆、案件关系；生成标准化案事件材料等能力。</p></div>
+              <div class="d-item"><span class="n">02</span><p data-edit-id="exp-3-p2"><b>定制产品设计：</b>主导三维可视化平台、低空资产管理平台、应急防汛一张图、交通安全管控一张图、智慧影都综合服务平台等多产品的从 0-1 规划、设计与落地。</p></div>
+              <div class="d-item"><span class="n">03</span><p data-edit-id="exp-3-p2"><b>基线产品迭代：</b>主导公司基线产品，包括视图全目标分析系统（人脸、车辆）、街面巡防、治安app、制毒物品全流程管理平台等系统平台的早期需求收集与功能迭代。</p></div>         
+              <div class="d-item"><span class="n">04</span><p data-edit-id="exp-3-p3"><b>项目管理与交付：</b>统筹千万、百万级的项目交付，包括：西海岸城市云脑、西海岸城市云脑云资源租赁、东方影都智慧社区、数字沂源、西海岸停车管理信息平台等。核心动作包括项目前期需求调研与机会点导入，中期产品设计、研发推进与干系人汇报，后期验收、审计及运维的全流程管理，项目验收率 100%。</p></div>
             </div>
           </div></div></div>
         </div>
@@ -616,14 +628,14 @@ footer{border-top:1px solid var(--line);padding:28px 0}
             <div class="d-group">
               <h4 data-edit-id="exp-4-duty-h">职责</h4>
               <div class="d-item"><span class="n">01</span><p data-edit-id="exp-4-d1">负责 ERP、BI 等企业级产品视觉/交互设计，制定设计规范。</p></div>
-              <div class="d-item"><span class="n">02</span><p data-edit-id="exp-4-d2">负责线上、线下宣传物料设计。</p></div>
-              <div class="d-item"><span class="n">03</span><p data-edit-id="exp-4-d3">组建并管理设计团队，统筹品牌视觉体系搭建。</p></div>
+              <div class="d-item"><span class="n">02</span><p data-edit-id="exp-4-d2">统筹品牌体系建设，线上、线下宣传物料设计。</p></div>
+              <div class="d-item"><span class="n">03</span><p data-edit-id="exp-4-d3">组建并管理设计团队，建立设计规范与工作流程。</p></div>
             </div>
             <div class="d-group">
               <h4 data-edit-id="exp-4-perf-h">成果</h4>
               <div class="d-item"><span class="n">01</span><p data-edit-id="exp-4-p1"><b>产品设计：</b>主导 ERP、BI 系统、张仲景微信商城、支付宝未来药店等产品 UI/UX 设计。</p></div>
-              <div class="d-item"><span class="n">02</span><p data-edit-id="exp-4-p2"><b>团队建设：</b>重组设计团队，建立设计规范与工作流程</p></div>
-              <div class="d-item"><span class="n">03</span><p data-edit-id="exp-4-p3"><b>品牌体系：</b>完成企业官网、展会、宣传物料等全渠道视觉体系搭建。</p></div>
+              <div class="d-item"><span class="n">02</span><p data-edit-id="exp-4-p2"><b>品牌体系：</b>完成企业官网、展会、IP、宣传物料等全渠道视觉体系搭建。</p></div>
+              <div class="d-item"><span class="n">03</span><p data-edit-id="exp-4-p3"><b>团队管理：</b>重组设计团队，建立需求承接-团队脑暴-设计排期-任务认领-交付评审的工作流程，提升整体设计质量把控。统一色彩、字体、图标、组件等元素设计规范，保证多产品线界面风格一致、降低重复开发设计成本。</p></div>
             </div>
           </div></div></div>
         </div>
@@ -647,11 +659,26 @@ footer{border-top:1px solid var(--line);padding:28px 0}
           <div class="case-body">
             <div class="case-tags"><span>项目交付</span><span class="t2">供应商管理</span><span class="t2">三级等保</span><span class="t2">项目审计</span><span class="t2">等保审计</span></div>
             <h3 data-edit-id="case-1-title">西海岸城市云脑项目</h3>
-            <p class="c-desc" data-edit-id="case-1-desc">西海岸工信局牵头的区级城市云脑建设项目。前期参与总体方案规划并撰写二三维地理数字平台技术方案及产品设计；执行中期接任项目经理，统筹整体项目管理，完成二三维地理数字平台、视频联网平台、物联接入平台、等核心模块交付。</p>
-            <div class="case-facts">
-              <div><b>ROLE</b><p data-edit-id="case-1-role">技术方案 + 产品设计 + 中期接任项目经理</p></div>
-              <div><b>RESULT</b><p data-edit-id="case-1-result">视频联网平台汇聚3万+路监控（5000 路并发）、物联平台汇聚450+物联设备；通过三级等保、专家评审、综合绩效考核与审计</p></div>
-              <div><b>STATUS</b><p data-edit-id="case-1-status">2023.08 验收</p></div>
+            <p class="c-label">项目背景</p>
+            <p class="c-desc" data-edit-id="case-1-desc">由西海岸工信局牵头建设区级城市云脑，实现全区资源、应用、服务的共建共享。以萨中标包一部分，建设内容包括云脑架构支撑层、应用层中的二三维地理信息底座、物联接入平台、视频监控资源共享应用平台、可视化运维平台、三维可视化应用平台。</p>
+            <div class="case-achv">
+              <b>项目业绩</b>
+              <ul>
+                <li data-edit-id="case-1-a1">启动阶段参与整体项目方案的规划与编写，负责二三维地理数字平台市场调研与技术方案撰写；执行初期完成 AI 感知、IOT 智联、视频联网、低空资源管理等平台需求设计。</li>
+                <li data-edit-id="case-1-a2">执行中期接任项目经理，进行供应商管理，完成二三维地理数字平台、物联接入平台、视频资源共享平台等核心模块交付。</li>
+                <li data-edit-id="case-1-a4">2023.08 顺利通过三级等保、专家评审并完成项目验收，已通过信息化项目综合绩效考核和审计。</li>
+              </ul>
+            </div>
+            <div class="case-achv case-eff">
+              <b>建设成效</b>
+              <ul>
+                <li data-edit-id="case-1-e1">二三维地理底图：汇聚、更新全区卫星影像与倾斜摄影数据，建设云脑地理信息库，对外提供路径规划、地理编码、逆地理编码、要素绘制等服务。</li>
+                <li data-edit-id="case-1-e2">视频联网平台：汇聚 20+ 委办局、6 个街道共 3 万+ 路监控，支持同时 5000 路转/并发，通过治理、落图为各委办局提供视频调取、解析服务支撑。</li>
+                <li data-edit-id="case-1-e3">物联接入平台：对接全区各委办局的雨量计、河道监测、废气检测等450余路设备，提供标准数据对接、设备故障预警、数据超阈值告警等服务。</li>
+                <li data-edit-id="case-1-e4">低空资源管理平台：接入低空无人机，实现低空设备事前资源申请与审批，事中路线规划、状态同步、远程指挥，事后成果查看与管理。</li>
+                <li data-edit-id="case-1-e5">二三维数字应用平台：基于地理底图将视频设备、物联设备、感知事件统一上图，通过可视化图表分析设备运维、事件管控的同比环比情况，为城市治理提供决策辅助。</li>
+                <li data-edit-id="case-1-e6">可视化运维平台：对服务器、防火墙、交换机、摄像头等硬件及已建软件平台进行监控，通过钉钉、短信、电话推送告警，一经报警立即处置。</li>
+              </ul>
             </div>
           </div>
         </article>
@@ -664,10 +691,16 @@ footer{border-top:1px solid var(--line);padding:28px 0}
           <div class="case-body">
             <div class="case-tags"><span>项目交付</span><span class="t2">国产化改造</span><span class="t2">服务续期</span></div>
             <h3 data-edit-id="case-13-title">西海岸城市云脑云资源租赁项目</h3>
-            <p class="c-desc" data-edit-id="case-13-desc">为城市云脑提供网络、计算、存储、安全等云资源服务。执行中期接任项目经理：结合合同要求对项目进度与已建内容开展内审并输出报告，重新制定项目管理计划，带队完成剩余建设、测试与交付。</p>
-            <div class="case-facts">
-              <div><b>ROLE</b><p data-edit-id="case-13-role">项目经理：内审管理、计划重制、交付推进</p></div>
-              <div><b>RESULT</b><p data-edit-id="case-13-result">一期 2023.08 经第三方软测、等保、密评与专家评审顺利验收并续签二期；完成云环境国产化改造，服务 10+ 委办局、50+ 应用系统</p></div>
+            <p class="c-label">项目背景</p>
+            <p class="c-desc" data-edit-id="case-13-desc">该项目为西海岸城市云脑的配套项目，以服务的形式为城市云脑每年提供网络、计算、存储、安全等资源，保障城市云脑持续稳定运行。</p>
+            <div class="case-achv">
+              <b>项目业绩</b>
+              <ul>
+                <li data-edit-id="case-13-a1">执行阶段中期接任该项目，担任项目经理角色，主导项目总体建设。</li>
+                <li data-edit-id="case-13-a2">结合合同要求对项目进度、已建内容展开内审，针对建设进度、成本、风险情况输出内审报告。</li>
+                <li data-edit-id="case-13-a3">重新制定项目管理计划，带领团队按计划完成合同未完成内容的建设、测试、交付工作。</li>
+                <li data-edit-id="case-13-a4">一期 2023.08 经第三方软测、等保、密评与专家评审顺利验收并续签二期；完成云脑云环境整体国产化改造，为 10+ 委办局、50+ 应用系统提供稳定服务。</li>
+              </ul>
             </div>
           </div>
         </article>
@@ -680,11 +713,16 @@ footer{border-top:1px solid var(--line);padding:28px 0}
           <div class="case-body">
             <div class="case-tags"><span>项目交付</span><span class="t2">智慧社区</span><span class="t2">全流程管理</span></div>
             <h3 data-edit-id="case-14-title">东方影都智慧社区项目</h3>
-            <p class="c-desc" data-edit-id="case-14-desc">灵山卫街道牵头的智慧社区标杆项目。统筹项目资源、进度、质量、供应商与交付验收全流程管理；定期组织客户调研与汇报，保证项目方向稳定可控；带领团队按迭代计划完成开发与交付。</p>
-            <div class="case-facts">
-              <div><b>ROLE</b><p data-edit-id="case-14-role">项目 0-1 全流程统筹：进度/质量/供应商/验收管理</p></div>
-              <div><b>RESULT</b><p data-edit-id="case-14-result">通过专家评审与项目验收，服务用户 3 万+，无镀金蔓延</p></div>
-              <div><b>CLIENT</b><p data-edit-id="case-14-client">灵山卫街道</p></div>
+            <p class="c-label">项目背景</p>
+            <p class="c-desc" data-edit-id="case-14-desc">灵山卫街道牵头的智慧社区标杆项目，整合智能门禁、人脸/车牌识别、人证核录等设备，围绕党建引领、治安管理、基础治理、便民服务四大领域，将发生在社区的人、事、车、房、商户等信息采集、整合、分析、使用，构建服务于民、服务于企业、服务于公安政府的综合服务平台。</p>
+            <div class="case-achv">
+              <b>项目业绩</b>
+              <ul>
+                <li data-edit-id="case-14-a1">统筹项目资源管理、进度管理、质量管理、供应商管理、交付验收等工作，主导产品 0-1 全流程管理。</li>
+                <li data-edit-id="case-14-a2">对产品、交互、视觉设计进行评审，保证产品设计合理易用、满足客户需求、无镀金蔓延；定期组织客户调研与汇报，保证产品方向及细节稳定可控。</li>
+                <li data-edit-id="case-14-a3">带领团队按迭代计划稳步推进，完成人/车/房档案、通行记录、预警事件、便民服务、社区活动、积分管理、商户维护、党建一张图等功能的汇报、交付与培训。</li>
+                <li data-edit-id="case-14-a4">顺利通过专家评审及项目验收，服务用户 3 万+。</li>
+              </ul>
             </div>
           </div>
         </article>
@@ -697,10 +735,16 @@ footer{border-top:1px solid var(--line);padding:28px 0}
           <div class="case-body">
             <div class="case-tags"><span>项目交付</span><span class="t2">攻坚团队</span><span class="t2">多方协同</span></div>
             <h3 data-edit-id="case-12-title">西海岸停车管理平台项目</h3>
-            <p class="c-desc" data-edit-id="case-12-desc">城市级智慧停车运营管理平台建设项目。项目中期临危受命组建攻坚团队：多渠道调研梳理项目难点与卡点，按优先级制定开发计划并与业主确认，协调内外部资源推进历史遗留问题清零。</p>
-            <div class="case-facts">
-              <div><b>ROLE</b><p data-edit-id="case-12-role">项目管理与产品设计统筹：计划制定、资源协调、业主沟通</p></div>
-              <div><b>RESULT</b><p data-edit-id="case-12-result">按计划解决历史遗留业务/技术问题，平台稳定运行，通过专家评审与项目验收</p></div>
+            <p class="c-label">项目背景</p>
+            <p class="c-desc" data-edit-id="case-12-desc">城市级智慧停车运营管理平台，整合高位视频、地磁、ETC 等智能硬件，覆盖路内/路外停车全场景，为车主用户提供停车诱导、便捷停车、无感支付等服务，为西海岸公用事业集团提供智能化运营管理工具。项目中期临危受命组建攻坚团队，快速梳理项目卡点并制定解决方案，统筹项目管理与产品设计，推进项目顺利验收。</p>
+            <div class="case-achv">
+              <b>项目业绩</b>
+              <ul>
+                <li data-edit-id="case-12-a1">多渠道开展团队项目调研，梳理项目存在难点、卡点，初步明确业主期望与解决方案。</li>
+                <li data-edit-id="case-12-a2">根据优先级制定开发计划并与业主确认，内部协调所需资源。</li>
+                <li data-edit-id="case-12-a3">按计划解决历史遗留业务/技术问题，保障平台稳定运行；收集客户反馈，解释原因并给出解决方案，及时优化产品设计。</li>
+                <li data-edit-id="case-12-a4">顺利通过专家评审及项目验收。</li>
+              </ul>
             </div>
           </div>
         </article>
@@ -713,11 +757,14 @@ footer{border-top:1px solid var(--line);padding:28px 0}
           <div class="case-body">
             <div class="case-tags"><span>项目交付</span><span class="t2">多子系统</span><span class="t2">一张图</span></div>
             <h3 data-edit-id="case-4-title">数字沂源项目</h3>
-            <p class="c-desc" data-edit-id="case-4-desc">沂源县大数据牵头建设县级城市智能指挥中心，交付内容包括数据中台、数字城市视频场景应用、应急防汛与交通管控一张图、低空资产管理、疫情防控感知、智慧警务/公安等子系统；负责其中四个子平台的推进与交付。</p>
-            <div class="case-facts">
-              <div><b>ROLE</b><p data-edit-id="case-4-role">子平台的需求调研、产品设计、开发对接与客户汇报全流程推进</p></div>
-              <div><b>SCOPE</b><p data-edit-id="case-4-scope">应急防汛 / 交通管控一张图 · 低空资产管理平台</p></div>
-              <div><b>CLIENT</b><p data-edit-id="case-4-client">沂源县大数据</p></div>
+            <p class="c-label">项目背景</p>
+            <p class="c-desc" data-edit-id="case-4-desc">沂源县大数据牵头建设县级城市智能指挥中心，交付内容包括数据中台、数字城市视频场景应用、应急防汛一张图、交通安全管控一张图、低空资产管理平台、疫情防控感知平台、沂源智慧警务、沂源智慧公安。</p>
+            <div class="case-achv">
+              <b>项目业绩</b>
+              <ul>
+                <li data-edit-id="case-4-a1">负责数字城市视频场景应用、应急防汛一张图、交通安全管控一张图、低空资产管理平台四个子平台的需求调研、产品设计、开发对接与客户汇报工作。</li>
+                <li data-edit-id="case-4-a2">带动四个子平台按计划完成开发与交付，支撑项目整体通过专家评审及验收。</li>
+              </ul>
             </div>
           </div>
         </article>
@@ -730,10 +777,14 @@ footer{border-top:1px solid var(--line);padding:28px 0}
           <div class="case-body">
             <div class="case-tags"><span>项目交付</span><span class="t2">全过程管理</span><span class="t2">验收回款</span></div>
             <h3 data-edit-id="case-16-title">山东中兴外贸综合服务平台项目</h3>
-            <p class="c-desc" data-edit-id="case-16-desc">统筹山东中兴供应链项目的全过程管理：明确里程碑与交付计划，拉通研发资源推进外综服平台及小程序从 0-1 建设，组织验收与回款闭环。</p>
-            <div class="case-facts">
-              <div><b>ROLE</b><p data-edit-id="case-16-role">项目经理：过程管理、里程碑管控、干系人协调</p></div>
-              <div><b>RESULT</b><p data-edit-id="case-16-result">外综服平台及小程序完成 0-1 建设并通过项目验收，实现回款闭环</p></div>
+            <p class="c-label">项目背景</p>
+            <p class="c-desc" data-edit-id="case-16-desc">山东中兴供应链对外建设项目，需完成山东中兴外综服平台及小程序的从 0-1 建设，覆盖外贸综合服务核心业务流程，支撑公司对外项目全生命周期管理。</p>
+            <div class="case-achv">
+              <b>项目业绩</b>
+              <ul>
+                <li data-edit-id="case-16-a1">统筹项目全过程管理：明确里程碑与交付计划，拉通研发资源推进外综服平台及小程序从 0-1 建设。</li>
+                <li data-edit-id="case-16-a2">组织验收与回款闭环，实现项目验收与回款。</li>
+              </ul>
             </div>
           </div>
         </article>
