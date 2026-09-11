@@ -366,13 +366,13 @@ h1.hero-name .name-en b{color:var(--accent);font-weight:300}
 .contact h2 em{font-style:normal;color:var(--accent)}
 .contact .c-sub{margin-top:16px;color:var(--text-dim);font-weight:300;max-width:540px;margin-left:auto;margin-right:auto;font-size:15px}
 .contact-ctas{margin-top:42px;display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
-.contact-info{margin-top:52px;display:flex;justify-content:center;gap:44px;flex-wrap:wrap}
+.contact-info{margin-top:72px;display:flex;justify-content:center;align-items:center;gap:36px 72px;flex-wrap:wrap;text-align:center;position:relative;left:-15px}
 .contact-info a{
-  font-family:var(--mono);font-size:13px;color:var(--text-dim);text-decoration:none;letter-spacing:.06em;
-  display:inline-flex;align-items:center;gap:9px;transition:color .2s;
+  font-family:var(--mono);font-size:clamp(15px,1.5vw,17.5px);color:var(--text-dim);text-decoration:none;letter-spacing:.06em;
+  display:inline-flex;align-items:center;gap:12px;transition:color .2s;justify-content:center;
 }
 .contact-info a:hover{color:var(--accent)}
-.contact-info .loc{font-family:var(--mono);font-size:13px;color:var(--text-dim);letter-spacing:.06em}
+.contact-info .loc{font-family:var(--mono);font-size:clamp(15px,1.5vw,17.5px);color:var(--text-dim);letter-spacing:.06em}
 .contact-goals{
   margin-top:46px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px;
   max-width:880px;margin-left:auto;margin-right:auto;text-align:left;
